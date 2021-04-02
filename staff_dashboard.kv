@@ -1,0 +1,392 @@
+<ContentNavigationDrawer>
+    orientation: 'vertical'
+    
+    spacing:20
+    canvas.before:
+        Color: 
+            rgba:(0,0,0,0.3)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    Image:
+        source:"images/pmsicon.png"
+        size_hint: 0.5,0.2
+        
+
+    MDLabel:
+        text:"Parking Management System"
+        font_size: self.parent.height/25
+        size_hint:(1,None)
+         
+    
+    ScrollView:
+
+        
+
+        MDList:
+            
+            spacing:10
+            
+
+            OneLineIconListItem:
+                text: "Add Parking"
+                theme_text_color:"Custom"
+                text_color:(0,0,0,1)
+                font_style:"H6"
+                bg_color:(0,0.7,1,0.5)
+
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "add parking"
+
+                
+                IconLeftWidget:
+                    icon:"language-python"
+                
+            OneLineIconListItem:
+                text: "Remove Parking"
+                theme_text_color:"Custom"
+                text_color:(0,0,0,1)
+                font_style:"H6"
+                bg_color:(0,0.7,1,0.5)
+
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "remove parking"
+                IconLeftWidget:
+                    icon:"language-python"
+            
+            OneLineIconListItem:
+                text: "Recent Entries"
+                theme_text_color:"Custom"
+                text_color:(0,0,0,1)
+                font_style:"H6"
+                bg_color:(0,0.7,1,0.5)
+
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.parent.parent.parent.recent_entries()
+                    root.screen_manager.current = "recent entries"
+                IconLeftWidget:
+                    icon:"language-python"
+            
+
+<Staff_Dashboard>
+    MDToolbar:
+        id: toolbar
+        pos_hint: {"top": 1}
+        elevation: 11
+        title: "Staff Dashboard"
+        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+        MDLabel:
+            id:username
+            text:""
+            halign:"right"
+            
+            theme_text_color:"Custom"
+            text_color:(1,0.8,0.24,1)
+            markup:True
+        MDIconButton:
+            icon:"logout"
+            user_font_size:50
+            on_release:root.logout()
+
+
+    MDNavigationLayout:
+
+        ScreenManager:
+            id:screen_manager
+
+            Screen:
+                name:"add parking"
+
+                MDLabel:
+                    text: "Add Parking"
+                    halign: "center"
+                    font_size: 50
+                    size_hint:(1,0.1)
+                    pos_hint:{'top':0.9}
+                    
+                MDCard:
+                    orientation: 'vertical'
+                    id:parking_entry_card
+                    size_hint:0.5,0.4
+                    pos_hint:{'x':0.01,"center_y":0.5}
+                    elevation:3
+                    padding: 10
+                    canvas:
+                        Color:
+                            rgba:(0,0,0,0.4)
+                        Rectangle:
+                            pos:self.pos
+                            size:self.size
+                        Color:
+                            rgba:0.51,0.027,0.356,1
+                        RoundedRectangle:
+                            radius:[40]
+                            pos:self.pos
+                            size:self.size
+                    
+                    GridLayout:
+                        spacing:20
+                        padding: 5
+                        cols:2
+                        rows:5
+                        MDLabel:
+                            text:"Owner's Name"
+                            font_size:self.parent.height/12
+                            size_hint:None,None
+                            width:4*self.parent.width/10
+                            height:2*self.parent.height/12
+                            halign:"center"
+                            theme_text_color:"Custom"
+                            text_color:(1,1,1,1)
+                        MDTextFieldRound:
+                            id:owner_name
+                            hint_text:"Name Of Vehicle Owner"
+                            icon_right:"account"
+                            font_size:self.parent.height/12
+                            size_hint:None,None
+                            width:5*self.parent.width/10
+                            height:2*self.parent.height/12
+                            normal_color:(1,0.8,0.25,1)
+                            color_active:(0.25,1,0.9,1)
+                            write_tab:False
+                            focus:True
+                            cursor_color:(1,0.9,0.24,1)
+                        MDLabel:
+                            text:"Mobile No"
+                            font_size:self.parent.height/12
+                            size_hint:None,None
+                            width:4*self.parent.width/10
+                            height:1*self.parent.height/12
+                            halign:"center"
+                            theme_text_color:"Custom"
+                            text_color:(1,1,1,1)
+                            
+                        MDTextFieldRound:
+                            id:mobile
+                            hint_text:"Mobile Number"
+                            icon_right:"cellphone"
+                            font_size:self.parent.height/12
+                            size_hint:None,None
+                            width:5*self.parent.width/10
+                            height:2*self.parent.height/12
+                            normal_color:(1,0.8,0.25,1)
+                            color_active:(0.25,1,0.9,1)
+                            write_tab:False
+                            cursor_color:(1,0.9,0.24,1)
+                            
+                        MDLabel:
+                            
+                            text:"Vehicle Type"
+                            font_size:self.parent.height/12
+                            size_hint:None,None
+                            width:4*self.parent.width/10
+                            height:2*self.parent.height/12
+                            halign:"center"
+                            theme_text_color:"Custom"
+                            text_color:(1,1,1,1)
+                            
+                        MDDropDownItem:
+                            id:dropdownbtn
+                            text:"Select Vehicle"
+                            font_size:self.parent.height/12
+                            size_hint:0.5,None
+                            
+                            height:2*self.parent.height/12
+                            on_release:root.dropdown.open(self)
+                            id:dropbtn
+                            md_bg_color:(1,1,1,0.8)
+                            theme_text_color:"Custom"
+                            text_color:(0,0,0,1)
+
+                        
+                        MDLabel:
+                            text:"Vehicle Number"
+                            font_size:self.parent.height/12
+                            size_hint:None,None
+                            width:4*self.parent.width/10
+                            height:1*self.parent.height/12
+                            halign:"center"
+                            theme_text_color:"Custom"
+                            text_color:(1,1,1,1)
+                            
+                        MDTextFieldRound:
+                            id:v_no
+                            hint_text:"Vehicle Number"
+                            icon_right:"car"
+                            font_size:self.parent.height/12
+                            size_hint:None,None
+                            width:5*self.parent.width/10
+                            height:2*self.parent.height/12
+                            normal_color:(1,0.8,0.25,1)
+                            color_active:(0.25,1,0.9,1)
+                            write_tab:False
+                            cursor_color:(1,0.9,0.24,1)
+
+                    MDFillRoundFlatButton:
+                        text:"Submit"
+                        id:submit_btn
+                        size_hint:0.5,0.15
+                        font_size:25
+                        md_bg_color:(0.2,0.6,1,1)
+                        pos_hint:{"center_x":0.5}
+                        on_release:root.generate_receipt()
+                        
+
+                MDLabel:
+                    text:""
+                    size_hint:1,0.1
+
+                
+
+                MDCard:
+                    size_hint:0.25,0.45
+                    pos_hint:{'x':0.6,'center_y':0.5}
+                    id:receipt_card
+                    orientation: 'vertical'
+                    spacing:10
+                    padding:10
+
+                    
+                    ScrollView:
+
+                        MDLabel:
+                            id:receipt_text
+                            text:"                     Receipt Box"
+                            markup:True
+                            halign:"left"
+                            pos_hint:{'x':0}
+                            font_size:(self.parent.height/20 + self.parent.width/20)/2
+                            
+
+            Screen:
+                name:"remove parking"
+
+                MDLabel:
+                    text: "Remove Parking"
+                    halign: "center"
+                    size_hint:(1,0.1)
+                    pos_hint:{'center_x':0.5,'top':0.9}
+                    font_size:50
+                MDCard:
+                    orientation: 'vertical'
+                    spacing:20
+                    id:remove_parking_card
+                    size_hint:0.5,0.4
+                    pos_hint:{'x':0.01,"center_y":0.5}
+                    elevation:3
+                    padding: 10
+                    canvas:
+                        Color:
+                            rgba:(0,0,0,0.4)
+                        Rectangle:
+                            pos:self.pos
+                            size:self.size
+                        Color:
+                            rgba:0.51,0.027,0.356,1
+                        RoundedRectangle:
+                            radius:[40]
+                            pos:self.pos
+                            size:self.size
+                    
+                    GridLayout:
+                        size_hint:1,None
+                        height:2*self.parent.height/12
+                        spacing:20
+                        padding: 5
+                        cols:2
+                        pos_hint:{'top':1}
+                        
+                        MDLabel:
+                            text:"Vehicle Number"
+                            font_size:8*self.parent.height/15
+                            size_hint:None,None
+                            width:6*self.parent.width/15
+                            height:8*self.parent.height/15
+                            halign:"center"
+                            theme_text_color:"Custom"
+                            text_color:(1,1,1,1)
+                        MDTextFieldRound:
+                            id:check_out_v_no
+                            hint_text:"Vehicle Number"
+                            icon_right:"car"
+                            font_size:8*self.parent.height/15
+                            size_hint:None,None
+                            width:7*self.parent.width/15
+                            height:8*self.parent.height/15
+                            normal_color:(1,0.8,0.25,1)
+                            color_active:(0.25,1,0.9,1)
+                            write_tab:False
+                            focus:True
+                            cursor_color:(1,0.9,0.24,1)
+                        
+
+                    MDFillRoundFlatButton:
+                        text:"Submit"
+                        
+                        font_size:self.parent.height/12
+                        size_hint:None,None
+                        width:5*self.parent.width/10
+                        height:2*self.parent.height/12
+                        md_bg_color:(0.2,0.6,1,1)
+                        pos_hint:{"center_x":0.5}
+                        on_release:root.generate_check_out_receipt()
+                        
+                    MDLabel:
+                        id:check_out_mess
+                        halign:"center"
+                        text:""
+                        size_hint:1,0.1
+                        font_size:25
+                        theme_text_color:"Custom"
+                        text_color:(0,1,0,1)
+                        pos_hint:{'center_x':0.5}
+
+                MDLabel:
+                    text:""
+                    size_hint:1,0.1
+
+
+                
+
+                MDCard:
+                    size_hint:0.25,0.45
+                    pos_hint:{'x':0.6,'center_y':0.5}
+
+                    
+                    ScrollView:
+
+                        MDLabel:
+                            id:check_out_receipt_box
+                            text:"                     Receipt Box"
+                            markup:True
+                            halign:"left"
+                            pos_hint:{'x':0}
+                            font_size:(self.parent.height/20 + self.parent.width/20)/2
+            
+            Screen:
+                name:'recent entries'
+                id:recent_entries_screen
+
+            
+
+        MDNavigationDrawer:
+            id: nav_drawer
+
+            ContentNavigationDrawer:
+                screen_manager: screen_manager
+                nav_drawer: nav_drawer
+
+    MDBottomAppBar:
+
+        MDToolbar:
+            title: ""
+            type: "bottom"
+            icon:"alarm"
+            MDLabel:
+                id:live_clock
+                text:""
+                halign:"right"
+                markup:True

@@ -1,0 +1,170 @@
+<Manage_Slots>
+
+    MDTabs:
+        id:slot_tab_bar
+        on_tab_switch:root.on_tab_switch(*args)
+        pos_hint:{'top':0.923}
+        background_color:(0,0,1,1)
+        text_color_active:(0.9,0.7,0,1)
+        text_color_normal:(1,1,1,1)
+        
+
+        Slot_Tab:
+            id:view_slots
+            title:'[b][size=30]View Slots[/size][/b]'
+            
+
+            MDLabel:
+                text:"Slots"
+                font_size:50
+                pos_hint:{'center_x':0.5,'top':1}
+                size_hint:(1,0.1)
+                halign:"center"
+
+        
+        Slot_Tab:
+            id:edit_slots
+            title:'[b][size=30]Edit Slots[/size][/b]'
+
+            MDLabel:
+                text:"Edit Slots"
+                font_size:50
+                pos_hint:{'center_x':0.5,'top':1}
+                size_hint:(1,0.1)
+                halign:"center"
+            
+            MDCard:
+                orientation:'vertical'
+                spacing:10
+                padding: 20
+                size_hint:0.47,0.3
+                pos_hint:{'top':0.9,'center_x':0.5}
+                focus_behavior:True
+                elevation:3
+                canvas:
+
+                    Color: 
+                        rgba:(1,1,0,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size
+                GridLayout:
+                    cols:2
+                    spacing:30
+                    size_hint:(0.8,0.8)
+                    MDLabel:
+                        
+                        text:"Slot Type"
+                        
+                        
+                        size_hint:(None,None)
+                        width:5*self.parent.width/10
+                        height:4*self.parent.height/10
+                        font_size:2*self.parent.height/10
+                        halign:"center"
+                        valign:"bottom"
+
+                    
+                        
+
+                    MDDropDownItem:
+                        id: mainbutton
+                        
+                        text: ''
+                        
+                        font_size:2*self.parent.height/10
+                        size_hint:(1,None)
+                        #width:10*self.parent.width/10
+                        height:5*self.parent.height/10
+                        md_bg_color:(0.2,0.93,0.93,0.9)
+                        
+
+                        
+
+                MDFillRoundFlatButton:
+                    text:'Edit'
+                    font_size:30
+                    pos_hint:{'center_x':0.5}
+                    size_hint_x:0.4
+                    on_release: root.edit_particular_slot(mainbutton.text)
+
+            
+            MDCard:
+                id:edit_slot_card
+                orientation: 'vertical'
+                size_hint:(0.4,0.2)
+                pos_hint:{'top':0.5,'center_x':0.5}
+                spacing:10
+                padding: 20   
+
+                focus_behavior:True
+                elevation:3
+                canvas:
+
+                    Color: 
+                        rgba:(0.93,0.6,0.2,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size 
+                
+
+                GridLayout:
+                    cols:3
+                    padding: 10
+                    spacing:30
+                    size_hint:(0.9,1)
+
+                    MDLabel:
+                        text:"Total"
+                        halign:"center"
+                        size_hint:None,None
+                        size:3.2*self.parent.width/10,3.8*self.parent.height/10
+                        font_size:2.5*self.parent.height/10
+                    MDLabel:
+                        text:"Available"
+                        halign:"center"
+                        size_hint:None,None
+                        size:3.2*self.parent.width/10,3.8*self.parent.height/10
+                        font_size:2.5*self.parent.height/10
+                    MDLabel:
+                        size:2.2*self.parent.width/10,3.8*self.parent.height/10
+
+                    MDTextFieldRound:
+                        id:slot_total
+                        multiline:False
+                        hint_text:"Total"
+                        size_hint:None,None
+                        size:2.8*self.parent.width/10,2.8*self.parent.height/10
+                        font_size:2.5*self.parent.height/10
+                        
+                    MDTextFieldRound:
+                        id:slot_available
+                        multiline:False
+                        hint_text:"Available"
+                        size_hint:None,None
+                        size:2.8*self.parent.width/10,2.8*self.parent.height/10
+                        font_size:2.5*self.parent.height/10
+                        
+
+                    MDFillRoundFlatButton:
+                        id:save_btn
+                        text:"Save"
+                        size_hint:None,None
+                        size:2*self.parent.width/10,2*self.parent.height/10
+                        font_size:1.5*self.parent.height/10
+                        on_release:root.save_edit_slot()
+                    
+            MDLabel:
+                id:edit_slot_mess
+                text:""
+                font_size:25
+                theme_text_color:"Custom"
+                text_color:(0,1,0,1)
+                pos_hint:{'center_x':0.5,'y':0.1}
+                size_hint:(0.5,0.07)
+                halign:"center"
+            
+            
+

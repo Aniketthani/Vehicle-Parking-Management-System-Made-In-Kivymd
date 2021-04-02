@@ -1,0 +1,179 @@
+<AdminContentNavigationDrawer>
+    orientation: 'vertical'
+    
+    spacing:20
+    canvas.before:
+        Color: 
+            rgba:(0,0,0,0.3)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    Image:
+        source:"images/pmsicon.png"
+        size_hint: 0.5,0.2
+        
+
+    MDLabel:
+        text:"Parking Management System"
+        font_size: self.parent.height/25
+        size_hint:(1,None)
+         
+    
+    ScrollView:
+
+        
+
+        MDList:
+            spacing:10
+            
+            
+            
+
+            OneLineIconListItem:
+                text: "Dashboard"
+                theme_text_color:"Custom"
+                text_color:(0,0,0,1)
+                font_style:"H6"
+                bg_color:(0,0.7,1,0.5)
+
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "screen1"
+
+                
+                IconLeftWidget:
+                    icon:"language-python"
+                
+            OneLineIconListItem:
+                text: "Manage Slots"
+                theme_text_color:"Custom"
+                text_color:(0,0,0,1)
+                font_style:"H6"
+                bg_color:(0,0.7,1,0.5)
+
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.manage_slots()
+                    root.screen_manager.current = "manage_slots"
+                IconLeftWidget:
+                    icon:"language-python"
+            
+            OneLineIconListItem:
+                text: "Manage Vehicle Classes"
+                theme_text_color:"Custom"
+                text_color:(0,0,0,1)
+                font_style:"H6"
+                bg_color:(0,0.7,1,0.5)
+
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    
+                    root.screen_manager.current = "screen3"
+                IconLeftWidget:
+                    icon:"language-python"
+                
+            OneLineIconListItem:
+                text: "Manage Staff"
+                theme_text_color:"Custom"
+                text_color:(0,0,0,1)
+                font_style:"H6"
+                bg_color:(0,0.7,1,0.5)
+
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    
+                    root.screen_manager.current = "screen4"
+                IconLeftWidget:
+                    icon:"language-python"
+
+            OneLineIconListItem:
+                text: "Report"
+                theme_text_color:"Custom"
+                text_color:(0,0,0,1)
+                font_style:"H6"
+                bg_color:(0,0.7,1,0.5)
+
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    
+                    root.screen_manager.current = "screen5"
+                IconLeftWidget:
+                    icon:"language-python"
+
+
+<AdminDashboard>
+    MDToolbar:
+        id: toolbar
+        pos_hint: {"top": 1}
+        elevation: 11
+        title: "Administrator's Cabin"
+        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+        MDLabel:
+            id:username
+            text:""
+            halign:"right"
+            
+            theme_text_color:"Custom"
+            text_color:(1,0.8,0.24,1)
+            markup:True
+        MDIconButton:
+            icon:"logout"
+            user_font_size:50
+            on_release:root.logout()
+    
+    MDNavigationLayout:
+
+        ScreenManager:
+            id:screen_manager
+
+            Screen:
+                name:"screen1"
+
+                MDLabel:
+                    text: "screen 1"
+                    halign: "center"
+                    font_size: 50
+                    size_hint:(1,0.1)
+                    pos_hint:{'top':0.9}
+                    
+            #Screen:
+            #    name:"screen2"
+
+            #    MDLabel:
+            #        text: "Screen 2"
+            #        halign: "center"
+            #        size_hint:(1,0.1)
+            #        pos_hint:{'center_x':0.5,'top':0.9}
+            #        font_size:50
+                
+            
+            Screen:
+                name:'screen3'
+            
+            Screen:
+                name:'screen4'
+
+            Screen:
+                name:'screen5'
+                
+
+            
+
+        MDNavigationDrawer:
+            id: nav_drawer
+
+            AdminContentNavigationDrawer:
+                screen_manager: screen_manager
+                nav_drawer: nav_drawer
+
+    MDBottomAppBar:
+
+        MDToolbar:
+            title: ""
+            type: "bottom"
+            icon:"alarm"
+            MDLabel:
+                id:live_clock
+                text:""
+                halign:"right"
+                markup:True
