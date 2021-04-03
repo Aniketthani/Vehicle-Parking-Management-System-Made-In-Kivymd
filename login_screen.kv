@@ -27,12 +27,13 @@
             orientation: 'vertical'
             spacing:20
             focus_behavior:True
+            elevation:35
             
             
                 
             canvas:
                 Color:
-                    rgba:(0,0,0,0.25)
+                    rgba:(0,0,0,0.175)
                 Rectangle:
                     pos:self.pos
                     size:self.size
@@ -60,6 +61,7 @@
                 pos_hint: {'center_x':0.5 ,'center_y':0.3 }
                 write_tab:False
                 focus:True
+                cursor_color:(0,0,0,1)
             MDTextFieldRound:
                 id:password
                 hint_text:"Password"
@@ -74,6 +76,7 @@
                 
                 pos_hint: {'center_x':0.5  ,'center_y':0.5}
                 write_tab:False
+                cursor_color:(0,0,0,1)
             MDIconButton:
                 
                 user_font_size: 50#(self.parent.height/15 + self.parent.height/12)/2
