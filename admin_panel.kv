@@ -1,0 +1,186 @@
+<Admin_Panel>
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing:20
+        size_hint: 1,1
+        pos_hint: {'center_x':0.5 , 'center_y':0.5 }
+
+        Widget:
+            size_hint:1,0.04
+
+
+        MDLabel:
+            text:"Dashboard"
+            halign:"left"
+            size_hint:1,0.1 
+            font_size: 40
+            valign:"bottom"
+            pos_hint:{'top':0.96}
+            
+
+        MDCard:
+            orientation:'horizontal'
+            size_hint:0.9,0.28
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            padding: 40
+            spacing:30
+            elevation:30
+
+            
+            
+            MDCard:
+                
+                orientation:'vertical'
+                padding: 20
+                spacing:30
+
+                canvas.before:
+                    Color:
+                        rgba:(0.87,0,0.4,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size
+
+                BoxLayout:
+                    orientation:'horizontal'
+                    padding: self.width/14
+                    spacing:self.width/14
+
+                    MDLabel:
+                        id:total_slots
+                        text:"1"
+                        font_size: 4*self.parent.height/20 + 3.5*self.parent.width/20
+                        halign:"center"
+                        theme_text_color:"Custom"
+                        text_color:(1,0.9,0.1,1)
+                    MDIcon:
+                        icon:"shopping-outline"
+                        font_size: 8*self.parent.height/20 + 5*self.parent.width/20
+                        halign:"center"
+                        theme_text_color:"Custom"
+                        text_color:(0,0,0,0.4)
+                MDLabel:
+                    text:"[b]Total Parking Slots[b]"
+                    markup:True
+            
+            MDCard:
+                
+                orientation:'vertical'
+                padding: 20
+                spacing:30
+
+                canvas.before:
+                    Color:
+                        rgba:(0.87,0.33,0,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size
+
+                BoxLayout:
+                    orientation:'horizontal'
+                    padding: self.width/14
+                    spacing:self.width/14
+
+                    MDLabel:
+                        id:total_users
+                        text:"2"
+                        font_size: 4*self.parent.height/20 + 3.5*self.parent.width/20
+                        halign:"center"
+                        theme_text_color:"Custom"
+                        text_color:(1,0.9,0.1,1)
+                    MDIcon:
+                        icon:"account"
+                        font_size: 8*self.parent.height/20 + 5*self.parent.width/20
+                        halign:"center"
+                        theme_text_color:"Custom"
+                        text_color:(0,0,0,0.4)
+                MDLabel:
+                    text:"[b]Total Users[b]"
+                    markup:True
+            
+            MDCard:
+                
+                orientation:'vertical'
+                padding: 20
+                spacing:30
+
+                canvas.before:
+                    Color:
+                        rgba:(0,0.43,1,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size
+
+                BoxLayout:
+                    orientation:'horizontal'
+                    padding: self.width/14
+                    spacing:self.width/14
+
+                    MDLabel:
+                        id:total_parkings
+                        text:"3"
+                        font_size: 4*self.parent.height/20 + 3.5*self.parent.width/20
+                        halign:"center"
+                        theme_text_color:"Custom"
+                        text_color:(1,0.9,0.1,1)
+                    MDIcon:
+                        icon:"car"
+                        font_size: 8*self.parent.height/20 + 5*self.parent.width/20
+                        halign:"center"
+                        theme_text_color:"Custom"
+                        text_color:(0,0,0,0.4)
+                MDLabel:
+                    text:"[b]Total Parkings[b]"
+                    markup:True
+
+            MDCard:
+                
+                orientation:'vertical'
+                padding: 20
+                spacing:30
+
+                canvas.before:
+                    Color:
+                        rgba:(0,0.8,0,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size
+
+                BoxLayout:
+                    orientation:'horizontal'
+                    padding: self.width/14
+                    spacing:self.width/14
+
+                    MDLabel:
+                        id:empty_slots
+                        text:"4"
+                        font_size: 4*self.parent.height/20 + 3.5*self.parent.width/20
+                        halign:"center"
+                        theme_text_color:"Custom"
+                        text_color:(1,0.9,0.1,1)
+                    MDIcon:
+                        icon:"shopping-search"
+                        font_size: 8*self.parent.height/20 + 5*self.parent.width/20
+                        halign:"center"
+                        theme_text_color:"Custom"
+                        text_color:(0,0,0,0.4)
+                MDLabel:
+                    text:"[b]Empty Slots[b]"
+                    markup:True
+                     
+                        
+                
+
+
+
+                
+            
+        Widget:
+            size_hint:(1,0.5)
+

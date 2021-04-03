@@ -1,3 +1,5 @@
+#: import Admin_Panel admin_panel.Admin_Panel
+
 <AdminContentNavigationDrawer>
     orientation: 'vertical'
     
@@ -38,7 +40,9 @@
 
                 on_press:
                     root.nav_drawer.set_state("close")
-                    root.screen_manager.current = "screen1"
+                    
+                    root.screen_manager.current = "admin_panel"
+
 
                 
                 IconLeftWidget:
@@ -67,8 +71,8 @@
 
                 on_press:
                     root.nav_drawer.set_state("close")
-                    
-                    root.screen_manager.current = "screen3"
+                    root.manage_vehicles()
+                    root.screen_manager.current = "manage_vehicles"
                 IconLeftWidget:
                     icon:"language-python"
                 
@@ -81,8 +85,8 @@
 
                 on_press:
                     root.nav_drawer.set_state("close")
-                    
-                    root.screen_manager.current = "screen4"
+                    root.manage_staff()
+                    root.screen_manager.current = "manage_staff"
                 IconLeftWidget:
                     icon:"language-python"
 
@@ -126,15 +130,17 @@
         ScreenManager:
             id:screen_manager
 
-            Screen:
-                name:"screen1"
+            
 
-                MDLabel:
-                    text: "screen 1"
-                    halign: "center"
-                    font_size: 50
-                    size_hint:(1,0.1)
-                    pos_hint:{'top':0.9}
+            #Screen:
+            #    name:"screen1"
+#
+            #    MDLabel:
+            #        text: "screen 1"
+            #        halign: "center"
+            #        font_size: 50
+            #        size_hint:(1,0.1)
+            #        pos_hint:{'top':0.9}
                     
             #Screen:
             #    name:"screen2"
@@ -147,8 +153,8 @@
             #        font_size:50
                 
             
-            Screen:
-                name:'screen3'
+            #Screen:
+            #    name:'screen3'
             
             Screen:
                 name:'screen4'
@@ -165,6 +171,7 @@
             AdminContentNavigationDrawer:
                 screen_manager: screen_manager
                 nav_drawer: nav_drawer
+                
 
     MDBottomAppBar:
 

@@ -1,0 +1,332 @@
+<Manage_Staff>
+
+    MDTabs:
+        
+        on_tab_switch:root.on_tab_switch(*args)
+        pos_hint:{'top':0.91}
+        background_color:(0,0,1,1)
+        text_color_active:(0.9,0.7,0,1)
+        text_color_normal:(1,1,1,1)
+
+        Staff_Tab:
+            id:view_staff
+            title:'[b][size=30]View Staff[/size][/b]'
+            
+            
+            MDLabel:
+                text:"Staff"
+                font_size:50
+                pos_hint:{'center_x':0.5,'top':1}
+                size_hint:(1,0.1)
+                halign:"center"
+        
+        Staff_Tab:
+            id:add_staff
+            title:'[b][size=30]Add Staff[/size][/b]'
+            
+
+            MDLabel:
+                text:"Add Staff"
+                font_size:50
+                pos_hint:{'center_x':0.5,'top':1}
+                size_hint:(1,0.1)
+                halign:"center"
+
+            MDCard:
+                orientation:"vertical"
+                size_hint:0.7,0.7
+                pos_hint:{'center_x':0.5,'top':0.9}
+                elevation:25
+                padding:(40,50)
+
+                canvas:
+                    Color:
+                        rgba:(0,0,0,0.15)
+                    Rectangle:
+                        
+                        pos:self.pos
+                        size:self.size
+                    Color:
+                        rgba:(0.83,0,0.4,1)
+                    RoundedRectangle:
+                        radius:[40]
+                        pos:self.pos
+                        size:self.size
+
+                GridLayout:
+                    size_hint:1,0.5
+                    cols:4
+                    
+                    spacing:(50,100)
+
+                    MDTextFieldRound:
+                        id:add_name
+                        hint_text:"Name"
+                        icon_right:"account"
+                        size_hint:(0.2,None)
+                        font_size: 2*self.parent.height/25
+                        color_active:(1,1,0,1)
+                        #width:2*self.parent.width/10
+                        write_tab:False
+                        cursor_color:(0,0,0,1)
+                    MDDropDownItem: 
+                        id:add_type_btn
+                        text:"Type"
+                        size_hint_x:0.2
+                        size_hint_y: None
+                        font_size: 1.5*self.parent.height/25
+                        md_bg_color:(0,1,0,1)
+
+                    MDDropDownItem: 
+                        id:add_gender_btn
+                        text:"Gender"
+                        size_hint_x:0.2
+                        size_hint_y: None
+                        font_size: 1.5*self.parent.height/25
+                        md_bg_color:(0,1,0,1)
+                    
+                    MDTextFieldRound:
+                        id:add_mobile
+                        hint_text:"Mobile"
+                        icon_right:"cellphone"
+                        size_hint:(0.2,None)
+                        font_size: 2*self.parent.height/25
+                        #width:2*self.parent.width/10
+                        write_tab:False
+                        color_active:(1,1,0,1)
+                        cursor_color:(0,0,0,1)
+
+                    MDTextFieldRound:
+                        id:add_address
+                        hint_text:"Address"
+                        icon_right:"book"
+                        size_hint:(0.2,None)
+                        font_size: 2*self.parent.height/25
+                        #width:2*self.parent.width/10
+                        write_tab:False
+                        color_active:(1,1,0,1)
+                        cursor_color:(0,0,0,1)
+
+                    MDTextFieldRound:
+                        id:add_username
+                        hint_text:"Username"
+                        icon_right:"account-box"
+                        size_hint:(0.16,None)
+                        font_size: 2*self.parent.height/25
+                        #width:2*self.parent.width/10
+                        write_tab:False
+                        color_active:(1,1,0,1)
+                        cursor_color:(0,0,0,1)
+
+                    MDTextFieldRound:
+                        id:add_id
+                        hint_text:"ID"
+                        icon_right:"identifier"
+                        size_hint:(0.16,None)
+                        font_size: 2*self.parent.height/25
+                        #width:2*self.parent.width/10
+                        write_tab:False
+                        color_active:(1,1,0,1)
+                        cursor_color:(0,0,0,1)
+
+                    MDTextFieldRound:
+                        id:add_password
+                        hint_text:"Password"
+                        icon_right:"cellphone-key"
+                        size_hint:(0.2,None)
+                        font_size: 2*self.parent.height/25
+                        #width:2*self.parent.width/10
+                        write_tab:False
+                        password:True
+                        color_active:(1,1,0,1)
+                        cursor_color:(0,0,0,1)
+                    
+                MDFillRoundFlatButton:
+                    text:'Add'
+                    font_size:30
+                    size_hint_x:None
+                    
+
+                    width:1.5*self.parent.width/10
+                    pos_hint:{'center_x':0.5,'center_y':0.5}
+                    on_release: root.save_added_staff()
+
+                MDLabel:
+                    id:add_staff_mess
+                    text:""
+                    font_size: 25
+                    theme_text_color:"Custom"
+                    text_color:(0,1,0,1)
+                    size_hint:(0.5,0.1)
+                    halign:"center"
+                    pos_hint:{'center_x':0.5,'top':0.2}
+
+                
+        Staff_Tab:
+            id:delete_staff
+            title:'[b][size=30]Delete Staff[/size][/b]'
+            
+
+            MDLabel:
+                text:"Delete Staff"
+                font_size:50
+                pos_hint:{'center_x':0.5,'top':1}
+                size_hint:(1,0.1)
+                halign:"center"  
+            
+            GridLayout:
+                size_hint:0.6,0.2
+                pos_hint:{'center_x':0.5,'top':0.85}
+                padding:30
+                spacing:20
+                cols:3
+                canvas:
+                    Color:
+                        rgba:(1,0.83,0,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size  
+
+
+                MDLabel:
+                    text:"Username"
+                    size_hint_x:0.1
+                    size_hint_y: 0.2
+                    #height:self.parent.height/3
+                    font_size: 1.8*self.parent.height/10
+                
+                MDDropDownItem: 
+                    id:delete_username_btn
+                    text:""
+                    size_hint_x:0.2
+                    size_hint_y: None
+                    font_size: 2*self.parent.height/10
+                    md_bg_color:(0,1,0,1)
+
+                MDFillRoundFlatButton:
+                    text:'Delete'
+                    font_size:30
+                    size_hint_x:None
+                    width:1.5*self.parent.width/10
+                    on_release: root.delete_particular_staff()
+                Widget:
+
+                Widget:
+                
+                Widget:
+
+            MDLabel:
+                id:delete_staff_mess
+                markup:True
+                text:""
+                font_size: 25
+                theme_text_color:"Custom"
+                text_color:(0,1,0,1)
+                size_hint:(0.5,0.1)
+                halign:"center"
+                pos_hint:{'center_x':0.5,'top':0.4}
+
+        Staff_Tab:
+            id:change_passwd
+            title:'[b][size=30]Change Password[/size][/b]'
+            
+
+            MDLabel:
+                text:"Change Password"
+                font_size:50
+                pos_hint:{'center_x':0.5,'top':1}
+                size_hint:(1,0.1)
+                halign:"center"
+            
+            
+            GridLayout:
+                size_hint:0.7,0.2
+                pos_hint:{'center_x':0.5,'top':0.8}
+                padding:20
+                spacing:20
+                cols:3
+                canvas:
+                    Color:
+                        rgba:(1,0,0.3,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size
+#
+                MDLabel:
+                    text:"Username"
+                    size_hint_x:0.3
+                    size_hint_y: None
+                    height:self.parent.height/2
+                    font_size: 2*self.parent.height/10
+                    halign:"center"
+                MDDropDownItem: 
+                    id:edit_passwd_btn
+                    text:"V Type"
+                    size_hint_x:0.2
+                    size_hint_y: None
+                    font_size: 2*self.parent.height/10
+                    md_bg_color:(0,1,0,1)
+#
+                MDFillRoundFlatButton:
+                    text:'Edit'
+                    font_size:30
+                    size_hint_x:None
+                    width:1.5*self.parent.width/10
+                    on_release: root.edit_passwd()
+                
+            GridLayout:
+                size_hint:0.5,0.2
+                pos_hint:{'center_x':0.5,'top':0.5}
+                padding:30
+                spacing:20
+                cols:2
+                canvas:
+                    Color:
+                        rgba:(1,0.83,0,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size
+                MDLabel:
+                    text:"New Password"
+                    size_hint_x:0.2
+                    size_hint_y: 0.1
+                    #height:self.parent.height/3
+                    font_size: 2*self.parent.height/10
+                    
+                Widget:
+                    size_hint_x:0.2
+                    size_hint_y:0.1
+                
+                MDTextFieldRound:
+                    id:new_passwd
+                    hint_text:"New Password"
+                    icon_right:"account-lock"
+                    size_hint:(None,None)
+                    font_size: 4*self.parent.height/25
+                    width:3*self.parent.width/10
+                    write_tab:False
+                    password:True
+                    
+                    cursor_color:(0,0,0,1)
+                
+                MDFillRoundFlatButton:
+                    text:'Save'
+                    font_size:30
+                    size_hint_x:None
+                    width:1.5*self.parent.width/10
+                    on_release: root.save_new_passwd()
+            
+            MDLabel:
+                id:save_passwd_mess
+                text:""
+                font_size: 25
+                theme_text_color:"Custom"
+                text_color:(0,1,0,1)
+                size_hint:(0.5,0.1)
+                halign:"center"
+                pos_hint:{'center_x':0.5,'top':0.2}
+
+            

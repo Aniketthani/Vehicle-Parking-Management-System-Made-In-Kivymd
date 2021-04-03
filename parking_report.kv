@@ -1,0 +1,93 @@
+<Parking_Report>
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing:20
+        size_hint: 1,1
+        pos_hint: {'center_x':0.5 , 'center_y':0.5 }
+
+        Widget:
+            size_hint:1,0.04
+
+
+        MDLabel:
+            text:"Parking Report"
+            halign:"center"
+            size_hint:1,0.1 
+            font_size: 40
+            valign:"bottom"
+            pos_hint:{'top':0.96}
+
+        MDCard:
+            orientation:'vertical'
+            size_hint:0.4,0.2
+            pos_hint:{'center_x':0.5,'top':0.86}
+            spacing:20
+            GridLayout:
+                size_hint:(1,0.5)
+                cols:2
+                padding:40
+                spacing:30,
+
+                
+                
+                MDDropDownItem:
+                    id:from_date
+                    text: "From Date"
+                    md_bg_color:(0,0.9,0.8,1)
+                    size_hint:(0.3,None)
+                    #width:5*self.parent.width/10
+                    #height:self.parent.height/10
+                    font_size: 2*self.parent.height/20
+                    on_release: root.from_date()
+                    
+                MDDropDownItem:
+                    id:to_date
+                    text: "To Date"
+                    md_bg_color:(0,0.9,0.8,1)
+                    size_hint:(0.3,None)
+                    font_size: 2*self.parent.height/20
+                    #width:5*self.parent.width/10
+                    #height:self.parent.height/10
+                    on_release: root.to_date()
+
+                MDDropDownItem:
+                    id:staff
+                    text: "Select Staff"
+                    md_bg_color:(0,0.9,0.8,1)
+                    size_hint:(0.3,None)
+                    font_size: 2*self.parent.height/20
+                    #width:5*self.parent.width/10
+                    #height:self.parent.height/10
+                    
+
+                MDDropDownItem:
+                    id:v_type
+                    text: "Select Vehicle Type"
+                    md_bg_color:(0,0.9,0.8,1)
+                    size_hint:(0.3,None)
+                    font_size: 2*self.parent.height/20
+                    #width:5*self.parent.width/10
+                    #height:self.parent.height/10
+
+                Widget:
+                    size_hint:1,0.1
+                
+                Widget:
+                    size_hint:1,0.1
+
+            MDRaisedButton:
+                text:"Submit"
+                size_hint:(0.2,0.1)
+                pos_hint:{'center_x':0.5,'top':0.8}
+
+            Widget:
+                size_hint:1,0.2
+
+                   
+        Widget:
+            size_hint:(0.8,0.1)
+                        
+
+                

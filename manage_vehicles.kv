@@ -1,0 +1,292 @@
+<Manage_Vehicles>
+    MDTabs:
+        
+        on_tab_switch:root.on_tab_switch(*args)
+        pos_hint:{'top':0.91}
+        background_color:(0,0,1,1)
+        text_color_active:(0.9,0.7,0,1)
+        text_color_normal:(1,1,1,1)
+
+        Vehicle_Tab:
+            id:view_vehicles
+            title:'[b][size=30]View Vehicles[/size][/b]'
+            
+            
+            MDLabel:
+                text:"Vehicles"
+                font_size:50
+                pos_hint:{'center_x':0.5,'top':1}
+                size_hint:(1,0.1)
+                halign:"center"
+        
+        Vehicle_Tab:
+            id:add_vehicle
+            title:'[b][size=30]Add Vehicle[/size][/b]'
+            
+
+            MDLabel:
+                text:"Add Vehicle"
+                font_size:50
+                pos_hint:{'center_x':0.5,'top':1}
+                size_hint:(1,0.1)
+                halign:"center"
+
+            MDCard:
+                orientation:"vertical"
+                size_hint:0.4,0.5
+                pos_hint:{'center_x':0.5,'center_y':0.6}
+                elevation:20
+                padding:20
+                
+
+                canvas:
+                    
+                    Color:
+                        rgba:(0,0,0,0.1)
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+
+                    Color:
+                        rgba:(1,0.6,0,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size
+                
+                GridLayout:
+                    cols:2
+                    padding: 20
+                    spacing:20
+
+                    MDLabel:
+                        text:"Vehicle Type"
+                        halign:"center"
+                        size_hint:(None,None)
+                        width:4*self.parent.width/10
+                        height:2*self.parent.height/10
+                        font_size: 2*self.parent.height/23
+                    MDTextFieldRound:
+                        id:new_v_type
+                        hint_text:"Vehicle Type"
+                        icon_right:"car"
+                        size_hint:(None,None)
+                        font_size: 2*self.parent.height/25
+                        width:4*self.parent.width/10
+                        write_tab:False
+                        focus:True
+                        
+                    MDLabel:
+                        text:"Fare"
+                        halign:"center"
+                        size_hint:(None,None)
+                        width:4*self.parent.width/10
+                        height:2*self.parent.height/10
+                        font_size: 2*self.parent.height/23
+                    MDTextFieldRound:
+                        id:new_v_fare
+                        hint_text:"Fare"
+                        icon_right:"currency-inr"
+                        
+                        size_hint:(None,None)
+                        font_size: 2*self.parent.height/25
+                        width:4*self.parent.width/10
+                        write_tab:False
+                    MDLabel:
+                        
+                        text:"Total Slots"
+                        halign:"center"
+                        size_hint:(None,None)
+                        width:4*self.parent.width/10
+                        height:2*self.parent.height/10
+                        font_size: 2*self.parent.height/23
+                    MDTextFieldRound:
+                        id:new_v_slots
+                        hint_text:"Total Slots"
+                        icon_right:"shopping-outline"
+                        size_hint:(None,None)
+                        font_size: 2*self.parent.height/25
+                        width:4*self.parent.width/10
+                        write_tab:False
+                
+                MDFillRoundFlatButton:
+                    text:"Add"
+                    font_size: 30
+                    size_hint:(0.4,None)
+                    pos_hint:{'center_x':0.5}
+                    on_release: root.add_new_vehicle()
+
+            MDLabel:
+                id:add_vehicle_mess
+                text:""
+                font_size: 25
+                theme_text_color:"Custom"
+                text_color:(0,1,0,1)
+                size_hint:(0.5,0.1)
+                halign:"center"
+                pos_hint:{'center_x':0.5,'top':0.2}
+
+        Vehicle_Tab:
+            id:edit_vehicle
+            title:'[b][size=30]Edit Vehicle[/size][/b]'
+            
+
+            MDLabel:
+                text:"Edit Vehicle"
+                font_size:50
+                pos_hint:{'center_x':0.5,'top':1}
+                size_hint:(1,0.1)
+                halign:"center"
+            
+            GridLayout:
+                size_hint:0.7,0.2
+                pos_hint:{'center_x':0.5,'top':0.8}
+                padding:20
+                spacing:20
+                cols:3
+                canvas:
+                    Color:
+                        rgba:(1,0,0.3,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size
+#
+                MDLabel:
+                    text:"Vehicle Type"
+                    size_hint_x:0.3
+                    size_hint_y: None
+                    height:self.parent.height/2
+                    font_size: 2*self.parent.height/10
+                    halign:"center"
+                MDDropDownItem: 
+                    id:edit_v_type_btn
+                    text:"V Type"
+                    size_hint_x:0.2
+                    size_hint_y: None
+                    font_size: 2*self.parent.height/10
+                    md_bg_color:(0,1,0,1)
+#
+                MDFillRoundFlatButton:
+                    text:'Edit'
+                    font_size:30
+                    size_hint_x:None
+                    width:1.5*self.parent.width/10
+                    on_release: root.edit_vehicle_fare()
+                
+            GridLayout:
+                size_hint:0.5,0.2
+                pos_hint:{'center_x':0.5,'top':0.5}
+                padding:30
+                spacing:20
+                cols:2
+                canvas:
+                    Color:
+                        rgba:(1,0.83,0,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size
+                MDLabel:
+                    text:"Fare"
+                    size_hint_x:0.2
+                    size_hint_y: 0.1
+                    #height:self.parent.height/3
+                    font_size: 2*self.parent.height/10
+                    
+                Widget:
+                    size_hint_x:0.2
+                    size_hint_y:0.1
+                
+                MDTextFieldRound:
+                    id:edited_fare
+                    hint_text:"Fare"
+                    icon_right:"currency-inr"
+                    size_hint:(None,None)
+                    font_size: 4*self.parent.height/25
+                    width:3*self.parent.width/10
+                    write_tab:False
+                
+                MDFillRoundFlatButton:
+                    text:'Save'
+                    font_size:30
+                    size_hint_x:None
+                    width:1.5*self.parent.width/10
+                    on_release: root.save_edited_vehicle()
+            
+            MDLabel:
+                id:edit_vehicle_mess
+                text:""
+                font_size: 25
+                theme_text_color:"Custom"
+                text_color:(0,1,0,1)
+                size_hint:(0.5,0.1)
+                halign:"center"
+                pos_hint:{'center_x':0.5,'top':0.2}
+
+
+#
+        Vehicle_Tab:
+            id:delete_vehicle
+            title:'[b][size=30]Delete Vehicle[/size][/b]'
+            
+
+            MDLabel:
+                text:"Delete Vehicle"
+                font_size:50
+                pos_hint:{'center_x':0.5,'top':1}
+                size_hint:(1,0.1)
+                halign:"center"  
+
+            GridLayout:
+                size_hint:0.6,0.2
+                pos_hint:{'center_x':0.5,'top':0.9}
+                padding:30
+                spacing:20
+                cols:3
+                canvas:
+                    Color:
+                        rgba:(1,0.83,0,1)
+                    RoundedRectangle:
+                        radius:[30]
+                        pos:self.pos
+                        size:self.size  
+
+
+                MDLabel:
+                    text:"Vehicle Type"
+                    size_hint_x:0.1
+                    size_hint_y: 0.2
+                    #height:self.parent.height/3
+                    font_size: 2*self.parent.height/10
+                
+                MDDropDownItem: 
+                    id:delete_v_type_btn
+                    text:"V Type"
+                    size_hint_x:0.2
+                    size_hint_y: None
+                    font_size: 2*self.parent.height/10
+                    md_bg_color:(0,1,0,1)
+
+                MDFillRoundFlatButton:
+                    text:'Delete'
+                    font_size:30
+                    size_hint_x:None
+                    width:1.5*self.parent.width/10
+                    on_release: root.delete_particular_vehicle()
+                Widget:
+
+                Widget:
+                
+                Widget:
+            
+            MDLabel:
+                id:delete_vehicle_mess
+                markup:True
+                text:""
+                font_size: 25
+                theme_text_color:"Custom"
+                text_color:(0,1,0,1)
+                size_hint:(0.5,0.1)
+                halign:"center"
+                pos_hint:{'center_x':0.5,'top':0.4}

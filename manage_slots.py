@@ -28,6 +28,7 @@ class Manage_Slots(Screen):
         
 
     def show_slots(self,*args):
+        mydb.commit()
         
         sql="Select * from slots"
         cursor.execute(sql)
