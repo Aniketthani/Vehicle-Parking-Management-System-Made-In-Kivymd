@@ -10,7 +10,7 @@ from admin_panel import Admin_Panel
 from kivy.clock import Clock
 from manage_vehicles import Manage_Vehicles
 from manage_staff import Manage_Staff
-
+from parking_report import Parking_Report
 
 Builder.load_file('admin.kv')
 
@@ -71,7 +71,13 @@ class AdminContentNavigationDrawer(BoxLayout):
         self.manage_slots_screen=Manage_Slots(name='manage_slots')
         self.screen_manager.add_widget(self.manage_slots_screen)
 
-        
+    def parking_report(self,*args):
+        try:
+            self.screen_manager.remove_widget(self.parking_report_screen)
+        except:        
+            pass
+        self.parking_report_screen=Parking_Report()
+        self.screen_manager.add_widget(self.parking_report_screen)
 
 class MainApp(MDApp):
     def build(self):

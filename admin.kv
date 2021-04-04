@@ -99,8 +99,8 @@
 
                 on_press:
                     root.nav_drawer.set_state("close")
-                    
-                    root.screen_manager.current = "screen5"
+                    root.parking_report()
+                    root.screen_manager.current = "report"
                 IconLeftWidget:
                     icon:"language-python"
 
@@ -173,14 +173,14 @@
                 nav_drawer: nav_drawer
                 
 
-    MDBottomAppBar:
-
-        MDToolbar:
-            title: ""
-            type: "bottom"
-            icon:"alarm"
-            MDLabel:
-                id:live_clock
-                text:""
-                halign:"right"
-                markup:True
+    #MDBottomAppBar:
+#
+    #    MDToolbar:
+    #        title: ""
+    #        type: "bottom"
+    #        icon:"alarm"
+    #        MDLabel:
+    #            id:live_clock
+    #            text:""
+    #            halign:"right"
+    #            markup:True
