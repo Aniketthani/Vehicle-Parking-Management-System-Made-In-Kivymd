@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 02, 2021 at 11:25 AM
+-- Generation Time: Apr 04, 2021 at 12:20 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -107,7 +107,8 @@ INSERT INTO `parking` (`SNO`, `Emp_Name`, `Emp_Id`, `Owner_Name`, `Mobile`, `V_T
 (60, 'Aniket Thani', 1111, 'normal', 'normal', '2Wheeler', 'normal', '10:23:02pm', '10:36:38pm', '2021-03-31', '20'),
 (61, 'Aniket Thani', 1111, 'normal2', 'normal2', '2Wheeler', 'normal2', '10:27:55pm', '10:35:58pm', '2021-03-31', '20'),
 (62, 'Aniket Thani', 1111, 'dddd', 'dddd', 'Car', 'wwerrrr', '10:29:57pm', '0', '2021-03-31', '30'),
-(63, 'Aniket Thani', 1111, 'dvdvd', 'hvjvjv', 'Car', 'vjvvjvjv', '10:30:31pm', '0', '2021-03-31', '30');
+(63, 'Aniket Thani', 1111, 'dvdvd', 'hvjvjv', 'Car', 'vjvvjvjv', '10:30:31pm', '0', '2021-03-31', '30'),
+(64, 'Aniket Thani', 1111, 'helvsvv', 'hvdjvdvj', '2Wheeler', 'dddddddd', '07:22:52pm', '0', '2021-04-02', '20');
 
 -- --------------------------------------------------------
 
@@ -127,12 +128,11 @@ CREATE TABLE `slots` (
 --
 
 INSERT INTO `slots` (`SNO`, `Type`, `Total`, `Available`) VALUES
-(1, 'Car', 10, 3),
+(1, 'Car', 10, 10),
 (2, 'Truck', 10, 8),
-(3, '2Wheeler', 10, 10),
-(4, 'Bus', 10, 10),
-(5, 'LCV', 10, 9),
-(6, 'HCV', 10, 9);
+(3, '2Wheeler', 10, 9),
+(4, 'Bus', 10, 5),
+(5, 'LCV', 10, 9);
 
 -- --------------------------------------------------------
 
@@ -145,11 +145,11 @@ CREATE TABLE `users` (
   `Name` varchar(100) NOT NULL,
   `Type` varchar(100) NOT NULL,
   `Gender` varchar(1) NOT NULL,
-  `Mobile` int(10) NOT NULL,
+  `Mobile` varchar(14) NOT NULL,
   `Address` varchar(255) NOT NULL,
   `Username` varchar(20) NOT NULL,
   `Password` varchar(255) NOT NULL,
-  `Emp_Id` int(20) NOT NULL
+  `Emp_Id` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -157,8 +157,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`SNO`, `Name`, `Type`, `Gender`, `Mobile`, `Address`, `Username`, `Password`, `Emp_Id`) VALUES
-(1, 'Aniket Thani', 'Staff', 'M', 1234567890, 'hello iam here ', 'aniket', '1562206543da764123c21bd524674f0a8aaf49c8a89744c97352fe677f7e4006', 1111),
-(2, 'Administrator AKT', 'Administrator', 'M', 1245789686, 'krishna nagar , Vrindavan,UP', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 7777);
+(1, 'Aniket Thani', 'Staff', 'M', '1234567890', 'hello iam here ', 'aniket', '10176e7b7b24d317acfcf8d2064cfd2f24e154f7b5a96603077d5ef813d6a6b6', '1111'),
+(2, 'Administrator AKT', 'Administrator', 'M', '1245789686', 'krishna nagar , Vrindavan,UP', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '7777');
 
 -- --------------------------------------------------------
 
@@ -180,9 +180,8 @@ INSERT INTO `vehicles` (`SNO`, `V_Type`, `Fare`) VALUES
 (1, 'Car', '30'),
 (2, 'Truck', '70'),
 (3, '2Wheeler', '20'),
-(4, 'Bus', '50'),
-(5, 'LCV', '100'),
-(6, 'HCV', '120');
+(4, 'Bus', '60'),
+(5, 'LCV', '100');
 
 --
 -- Indexes for dumped tables
@@ -220,25 +219,25 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT for table `parking`
 --
 ALTER TABLE `parking`
-  MODIFY `SNO` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `SNO` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `slots`
 --
 ALTER TABLE `slots`
-  MODIFY `SNO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `SNO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `SNO` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `SNO` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `SNO` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `SNO` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
