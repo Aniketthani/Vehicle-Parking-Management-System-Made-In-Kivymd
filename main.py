@@ -1,3 +1,5 @@
+from kivy.core.window import Window
+Window.maximize()
 from kivymd.app import MDApp
 from kivymd.uix.toolbar import MDToolbar
 from kivy.uix.screenmanager import ScreenManager,Screen
@@ -8,6 +10,7 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 from staff_dashboard import Staff_Dashboard
 from admin import AdminDashboard
+
 
 
 
